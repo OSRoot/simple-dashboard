@@ -1,0 +1,31 @@
+<app-header [headerContent]="viewuserHeader"></app-header>
+
+<div class="wrapper">
+    <div class="search-filter-row">
+        <!-- You can add search/filter options here if needed -->
+    </div>
+
+    <div class="container">
+        <div class="data-container">
+            <div *ngIf="user; else noUser">
+                <div class="user-details">
+                    <div class="user-avatar">
+                        <img [src]="user.avatar" alt="{{user.first_name}} {{user.last_name}}">
+                    </div>
+                    <div class="user-info">
+                        <h2>{{user.first_name}} {{user.last_name}}</h2>
+                        <p><strong>Email:</strong> {{user.email}}</p>
+                    </div>
+                </div>
+            </div>
+            <ng-template #noUser>
+                <p>No user details available.</p>
+            </ng-template>
+        </div>
+        <div class="confirm-buttons">
+            <div class="cancel">
+                <button class="pointer transparent-bg" (click)="navigate('/main/dashboard','back')">{{'BACK' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

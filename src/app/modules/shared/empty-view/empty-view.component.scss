@@ -1,0 +1,16 @@
+.empty-view-wrapper{
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img{
+    width: 100px;
+  }
+  gap: 16px;
+  flex-direction: column;
+}
+
+h1{
+  font-size: 18px;
+  font-family: "regular";
+}

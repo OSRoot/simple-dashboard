@@ -1,0 +1,216 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'animate.css';
+
+@font-face {
+    font-family: 'thin';
+    src: url('./assets/fonts/cairo/Cairo-Light.ttf');
+}
+
+@font-face {
+    font-family: 'regular';
+    src: url('./assets/fonts/cairo/Cairo-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'bold';
+    src: url('./assets/fonts/cairo/Cairo-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'medium';
+    src: url('./assets/fonts/cairo/Cairo-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'black';
+    src: url('./assets/fonts/cairo/Cairo-Black.ttf');
+}
+
+// normalize css
+html, body, * {
+    font-family: 'regular';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    @media(max-width: 768px) {
+        display: none;
+    }
+}
+
+.w100{
+    width: 100%;
+}
+
+.primray{
+    color: var(--primary-color) !important;
+}
+// buttons
+.btn-primary{
+    // height:50px;
+    font-family: 'bold' !important;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    text-transform: none !important;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    &:hover{
+    transition: all 0.2s ease;
+    opacity: 0.8;
+    }
+    &:active{
+    transition: all 0.2s ease;
+    opacity: 1;
+    }
+    &:disabled{
+    transition: all 0.2s ease;
+    opacity: 0.5;
+    }
+}
+
+.btn-block{
+    max-width: 400px;
+    width: 100%;
+}
+
+.pointer{
+    cursor: pointer !important;
+    &:hover{
+        transition: all 0.2s ease;
+        opacity: 0.8;
+        }
+        &:active{
+        transition: all 0.2s ease;
+        opacity: 1;
+        }
+        &:disabled{
+        transition: all 0.2s ease;
+        opacity: 0.5;
+        }
+}
+
+// margins
+.margin{
+    margin: 16px !important;
+}
+.margin-top{
+    margin-top: 16px !important;
+}
+
+.margin-bottom{
+    margin-bottom: 16px !important;
+}
+
+.margin-start{
+    margin-inline-start: 16px !important;
+}
+
+.margin-end{
+    margin-inline-end: 16px !important;
+}
+
+// padding
+.padding{
+    padding: 16px !important;
+}
+
+.padding-top{
+    padding-top: 16px !important;
+}
+.padding-bottom{
+    padding-bottom: 16px !important;
+}
+
+.padding-start{
+    padding-inline-start: 16px !important;
+}
+
+.padding-end{
+    padding-inline-end: 16px !important;
+}
+
+// text
+.text-center{
+    text-align: center !important;
+}
+.no-text-select{
+    user-select: none !important;
+}
+
+// colors
+
+.primary{
+    color: var(--primary-color) !important;
+}
+.danger{
+    color: var(--danger-color) !important;
+}
+.danger-error{
+    color: var(--danger-color) !important;
+}
+// fonts
+.medium{
+    font-family: 'medium' !important;
+}
+
+.bold{
+    font-family: 'bold' !important;
+}
+
+.thin{
+    font-family: 'thin' !important;
+}
+
+.black{
+    font-family: 'black' !important;
+}
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// modal styles
+ion-modal{
+    --backdrop-opacity: 0.1;
+    --border-radius: 20px;
+    --box-shadow: -6px 10px 8.2px -2px rgba(0, 0, 0, 0.25);
+}
+
+.filter-modal{
+    --width:800px;
+}
+
+.popover-list{
+    --backdrop-opacity: 0.001;
+    --box-shadow: -1px 5px 12.2px 0px rgba(0, 0, 0, 0.25);
+    --width: 236px;
+    --height: 300px;
+}
+
+.popover-list::part(content){
+    --border-radius: 20px !important;
+    border-radius: 10px !important;
+}
+
+button{
+    user-select: none;
+}
+
+
+// hide the html arrow of select
+select {
+  -webkit-appearance: none;  /* Safari and Chrome */
+  -moz-appearance: none;     /* Firefox */
+  appearance: none;
+}
+
+
+
+// .inner-scroll, .scroll-y,*{
+//   scrollbar-width: thin !important;
+// }
+
+
+ion-content::part(scroll){
+  scrollbar-width: thin !important;
+}

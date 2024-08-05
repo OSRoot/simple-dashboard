@@ -1,0 +1,24 @@
+<div class="head" [ngClass]="getHeadClass()">
+  <div class="wrapper">
+    <div class="container">
+      <div class="right">
+        
+        <div class="style-right">
+          <img [src]="headerContent.activeIcon" />
+          <p>
+            <span [ngClass]="{active:active_link===headerContent.routerLink}">{{headerContent.moduleName | translate}}</span> 
+            <span [ngClass]="{active:true}">/</span> 
+            <span >{{headerContent.component | translate}}</span>
+          </p>
+        </div>
+
+      </div>
+
+
+
+      <div class="left">
+        
+      </div>
+    </div>
+  </div>
+</div>

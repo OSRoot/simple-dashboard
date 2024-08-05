@@ -1,0 +1,14 @@
+<app-header [headerContent]="adduserHeader"></app-header>
+<div class="wrapper">
+    <div class="container">
+
+        <div class="confirm-buttons">
+            <div class="cancel">
+                <button class="pointer  transparent-bg" (click)="navigate('/main/dashboard','back')">{{'CANCEL' | translate}}</button>
+            </div>
+            <div class="confirm">
+                <button class="pointer primray-bg">{{'SAVE' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

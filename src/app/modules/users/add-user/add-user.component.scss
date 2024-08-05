@@ -1,0 +1,112 @@
+.wrapper{
+  height: calc(100vh - 70px) !important;
+  border: 1px solid rgba(162, 161, 168, 0.30) !important;
+  border-radius: 10px !important;
+}
+form{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+  gap: 16px 16px;
+  width: 100%;
+  padding: 20px;
+  .form-item{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid rgba(162, 161, 168, 0.30);
+      border-radius: 10px;
+      position: relative;
+      img{
+          position: absolute;
+          left: 16px;
+      }
+      select{
+          border:none;
+          width: 100%;
+          height: 100%;
+          outline: 1px solid rgba(162, 161, 168, 0.30);
+          padding:10px 16px;
+          border-radius: 10px;
+          cursor: pointer;
+      }
+      input{
+          height: 44px;
+          // width: 100%;
+          cursor: pointer;
+          padding:10px 16px;
+          outline: none;
+          border: none;
+          border-radius: 10px;
+  }
+  .cal-icon{}
+  }
+}
+form> *:last-child {
+  grid-column: 1 / -1; /* Span from the first column to the last column */
+}
+.double-border{
+  border: 1px solid rgba(162, 161, 168, 0.60) !important;
+}
+.form-item-wrapper{
+  width: 100%;
+  margin: 0;
+  h3{
+      margin: 0;
+      font-family: 'bold';
+      font-size: 13px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+letter-spacing: 0.2px;
+color: #515050;
+  }
+}
+
+input{
+  *{
+      font-family: 'regular';
+      cursor: pointer;
+  }
+}
+
+.form-label{
+  .red-asterisk{
+      color: red;
+      font-size: 12px;
+
+  }
+}
+
+
+.flex-1-autogrow{
+  // ; autogrow
+}
+
+.confirm-buttons{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+  button{
+      width: 150px;
+      padding: 12px 24px;
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      font-family: 'medium';
+      cursor: pointer;
+      border: 1px solid rgba(162, 161, 168, 0.50);
+  }
+
+  .primray-bg{
+      background: var(--primary-color);
+      color: white;
+  }
+
+  .transparent-bg{
+      background: transparent;
+  }
+}

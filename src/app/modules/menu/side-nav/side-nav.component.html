@@ -1,0 +1,105 @@
+<div class="sidenav" [ngClass]="collapsed?'sidenav-collapsed':''">
+  <div class="logo-container pointer">
+    <img src="../../../../assets/icons/logo-user.svg" class="logo-user" @fadeInOut *ngIf="!collapsed" (click)="toggleCollapse()" />
+
+    <div class="logo-text" @fadeInOut *ngIf="collapsed">
+      <img src="../../../../assets/icons/logo-user.svg" class="logo-user" [ngClass]="{open: collapsed}" />
+    </div>
+    <button (click)="toggleCollapse()" class="toggle-menu" *ngIf="collapsed && selectedLanguage === 'ar'">
+      <img src="../../../../assets/icons/arrow-close-menu.svg" @fadeInOut />
+    </button>
+
+    <button (click)="toggleCollapse()" class="toggle-menu2" *ngIf="collapsed && selectedLanguage === 'en'">
+      <img src="../../../../assets/icons/arrow-open-menu.svg" @fadeInOut />
+    </button>
+  </div>
+
+  <div class="scrollwrap scrollwrap_delayed">
+    <ul class="sidenav-nav">
+      <li class="sidenav-nav-item" *ngFor="let data of navData">
+        <a class="sidenav-nav-link" (click)="handleClick(data)" *ngIf="data.items && data.items.length > 0"
+          [ngClass]="getActiveClass(data)">
+          <i class="sidenav-link-icon" [class]="data.icon"></i>
+          <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed"> {{data.label | translate}} </span>
+          <i *ngIf="data.items && collapsed" class="menu-collapse-icon"
+            [ngClass]="!data.expanded?'fal fa-angle-right':'fal fa-angle-down'"></i>
+        </a>
+        <!-- <img src="../../../../assets/icons/users.svg" alt=""> -->
+        <a class="sidenav-nav-link" *ngIf="!data.items || (data.items && data.items.length === 0)"
+          [routerLink]="[data.routeLink]" routerLinkActive="active"
+          [ngClass]="{active:active_link === data.routeLink || active_link.includes(data.routeLink)}"
+          (click)="shrinkItems(data) ;setActiveLink(data.routeLink)">
+
+          <!-- check if the router link is active to set the active icon -->
+          @if (active_link === data.routeLink || active_link.includes(data.routeLink)){
+          <img class="sidenav-link-icon" [src]="data.activeIcon" alt="">
+          }
+          @else{
+          <img class="sidenav-link-icon" [src]="data.icon" alt="">
+          }
+
+          <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed"> {{data.label | translate}} </span>
+        </a>
+        <div *ngIf="collapsed && data.items && data.items.length > 0">
+          <app-sublevel-menu [data]="data" [collapsed]="collapsed" [multiple]="multiple"
+            [expanded]="data.expanded"></app-sublevel-menu>
+        </div>
+      </li>
+      @if (collapsed && selectedLanguage === 'ar'){
+      <img class="bg-pattern-ar" src="../../../../assets/icons/bg_pattern.svg" />
+      }
+      @else if (collapsed && selectedLanguage === 'en'){
+      <img class="bg-pattern-en" src="../../../../assets/icons/bg_pattern.svg" />
+      }
+
+    </ul>
+
+  </div>
+
+
+
+  <!-- the menu wrapper will be hidden and shown dynamically -->
+  <div cdkMenuBar class="pointer cdk-lang-menu">
+    <div class="lang-menu-bar-item pointer no-text-select" cdkMenuItem [cdkMenuTriggerFor]="Language1">
+      @if(collapsed){
+      <img src="../../../../assets/icons/chevron-down.svg" />
+      <button>{{selectedLanguage === 'en' ? 'English' : 'العربية' | translate}}</button>
+      <img src="../../../../assets/icons/globe.svg" />
+      }
+      @else{
+      <img src="../../../../assets/icons/globe.svg" />
+      <button>{{selectedLanguage === 'en' ? 'EN' : 'AR' | translate}}</button>
+      }
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Language Menu Template -->
+
+<ng-template #Language1>
+  <div class="lang-menu pointer" cdkMenu>
+    <div class="lang-menu-item pointer no-text-select">
+      @if(collapsed) {
+      <img src="../../../../assets/icons/eg-flag.svg" />
+      <button class="pointer" cdkMenuItem (click)="setLanguage('ar')">{{"العربية"}}</button>
+      }
+      @else {
+      <img src="../../../../assets/icons/eg-flag.svg" class="img-menu" />
+      <button class="pointer menu-btn" cdkMenuItem (click)="setLanguage('ar')">{{"AR"}}</button>
+      }
+    </div>
+
+    <div class="lang-menu-item pointer no-text-select">
+      @if (collapsed) {
+      <img src="../../../../assets/icons/us-flag.svg" />
+      <button class="pointer" cdkMenuItem (click)="setLanguage('en')">{{"English"}}</button>
+      }
+      @else{
+      <img src="../../../../assets/icons/us-flag.svg" class="img-menu" />
+      <button class="pointer menu-btn" cdkMenuItem (click)="setLanguage('en')">{{"EN"}}</button>
+      }
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,119 @@
+<app-header [headerContent]="dashboardHeader"></app-header>
+<!-- search and filter row -->
+<div class="wrapper">
+    <div class="search-filter-row">
+        <!-- search here -->
+        <div class="search-input" [ngClass]="{active:searchActive}">
+            <img src="../../../assets/icons/search-outline.svg" class="search-icon" [ngClass]="{rotate360:searchActive, rotate:searchText}" />
+            <input [(ngModel)]="searchText" [placeholder]="'SEARCH' | translate" (focus)="searchActive = true" (blur)="searchActive = false" (keyup.enter)="handleSearchInput()" />
+        </div>
+
+        <div class="filter-and-add">
+            <div class="add-new-user">
+                <button class="btn-primary" (click)="navigate('main/users/add-user', 'forward')">
+                    <h4>{{ "ADD_NEW_USER" | translate }}</h4>
+                    <img src="../../../assets/icons/add-circle-outline.svg" />
+                </button>
+            </div>
+
+            <!-- filter here -->
+            <!-- <div class="filter">
+                <button class="btn-filter pointer">
+                    <h4>{{ "FILTER" | translate }}</h4>
+                    <img src="../../../assets/icons/filter-outline.svg" />
+                </button>
+            </div> -->
+        </div>
+    </div>
+        <ion-content>
+        <div class="table-header-row">
+          <div class="flex-1">{{ "ID" | translate }}</div>
+          <div>{{ "IMAGE" | translate }}</div>
+          <div>{{ "FIRST_NAME" | translate }}</div>
+          <div>{{ "LAST_NAME" | translate }}</div>
+          <div>{{ "EMAIL" | translate }}</div>
+          <div class="flex-center actions">
+            <div>{{ "ACTIONS" | translate }}</div>
+        </div>
+        </div>
+
+        @if (users[0]?.id){
+          <div class="data-row-wrapper animate__animated animate__fadeIn animate__faster">
+            @for(user of users;track $index){
+            <div class="table-header-row table-data-row" [ngClass]="{enterLeft: $index % 2 === 0, enterRight: $index % 2 !== 0}">
+              <div class="flex-1">{{ user.id }}</div>
+              <div class="avatar">
+                <img [src]="user.avatar" alt="">
+              </div>
+              <div>{{ user.first_name }}</div>
+              <div>{{ user.last_name }}</div>
+              <div>{{ user.email }}</div>
+              <div class="actions">
+                <button class="pointer" (click)="viewUser('main/users/user-details', 'forward', user)">
+                    <img src="../../../assets/icons/view-action.svg" alt="">
+                </button>
+                <button class="pointer">
+                    <img src="../../../assets/icons/edit-action.svg" alt="">
+                </button>
+                <button class="pointer">
+                    <img src="../../../assets/icons/delete-action.svg" alt="">
+                </button>
+            </div>
+            </div>
+            }
+            <div class="flex-center border"></div>
+        </div>
+        }
+
+        @if(isLoading){
+          <app-preloader></app-preloader>
+          }
+        @if(errorView){
+          <app-error-view></app-error-view>
+        }
+        @if(emptyView){
+          <app-empty-view></app-empty-view>
+        }
+        <!-- <ion-infinite-scroll threshold="25%" [disabled]="stopLoading" position="bottom" (ionInfinite)="loadMore($event)">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll> -->
+    </ion-content>
+    <!-- pagination here -->
+
+</div>
+
+<div class="pagination-wrapper">
+    <!-- back and forward icons 1, 2, 3 , 4 PAGE -->
+    <div class="pagination-counter">
+        <img class="pointer" src="../../../assets/icons/chevron-right.svg" (click)="previousPage()" />
+        @for(page of pages;track $index){
+            <div class="page pointer" [ngClass]="{active: currentPage === page}" (click)="goToPage(page)">{{page}}</div>
+        }
+        <img class="pointer" src="../../../assets/icons/chevron-left.svg" (click)="nextPage()"/>
+    </div>
+    <!-- show 1 to 10 of 60 page -->
+    <div class="pagination-range-text">
+        <span>{{'SHOW' | translate}}</span>
+        1
+        <span>{{'TO' |translate}}</span>
+        {{itemsPerPage}}
+        <span>{{'OF' | translate}}</span>
+        {{totalItems}}
+        <span>{{'PAGE' | translate}}</span>
+    </div>
+
+    <!-- select how many items per page -->
+    <div class="pagination-counter-select">
+        <span>{{'SHOW' | translate}}</span>
+
+        <div class="selection pointer">
+            <select class="pointer" (change)="changeItemsPerPage($event)">
+                    @for(item of itemsPerPageList; track $index){
+                    <option class="pointer" [value]="item">{{item}}</option>
+                }
+            </select>
+            <img src="../../../assets/icons/chevron-down.svg" />
+        </div>
+    </div>
+</div>
