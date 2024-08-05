@@ -4,5 +4,6 @@
 - [See the project](https://github.com/osroot/simple-dashboard)
 - there are lots of functionality to be added in the future and already in the project 
 
-### as for navigation ..,
+### As for navigation ...
+- Side Nav is a sub level menu, besides u can click on the side nav icon on the top to open menu
 - since this is a demo , the data has been transfered with the navigation
